@@ -1,5 +1,7 @@
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import TextField from '@material-ui/core/TextField';
 import * as React from 'react';
-import Loader from 'react-loader-spinner'
 import './App.css';
 
 interface IState {
@@ -52,12 +54,14 @@ export default class App extends React.Component<{}, IState> {
       <div className="container-fluid">
         <div className="centreText">
           <p>Ever wondered what the official name of your bus stop is? Just type in the bus stop ID below to find out!</p>
-          <input id="busStopId" />
-          <button onClick={this.state.whatever}>Check</button>
+          <TextField id="busStopId" label="Bus Stop ID" margin="normal" />
+          <Button variant="contained" color="primary" onClick={this.state.whatever}>
+            Check
+          </Button>
           <div  className="dank">
           {
             this.state.results === "" && this.state.busStop !== "" ?
-            <Loader type="TailSpin" color="#00BFFF" height={80} width={80}/> :
+            <CircularProgress thickness={3} /> :
             <p>{this.state.results}</p>
           }
           </div>
