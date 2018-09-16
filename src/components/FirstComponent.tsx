@@ -5,8 +5,8 @@ export default class FirstComponent extends React.Component<{}> {
         public render() {
                 return (
                         <div className="centreText">
-                                {/* React components must have a wrapper node/element */}
-                                <h1>(▀̿Ĺ̯▀̿ ̿)</h1>
+                                <img src={require('./central-dept-point-pocket-guide_july-2018-web-2.png')} width="1000px"/>
+                                <p>Source: <a href="https://at.govt.nz/media/1977606/central-dept-point-pocket-guide_july-2018-web.pdf">Auckland Transport</a></p>
                         </div>
                 );
         }

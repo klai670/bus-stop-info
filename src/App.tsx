@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import * as React from 'react';
 import './App.css';
 
+
 interface IState {
   busStop: any,
   results: any,
@@ -43,7 +44,7 @@ export default class App extends React.Component<{}, IState> {
         this.setState({results: response.statusText})
       }
       else {
-        response.json().then((data:any) => this.setState({results: data.response[0].stop_name}))
+        response.json().then((data:any) => this.setState({results: "Stop name: " + data.response[0].stop_name}))
       }
       return response
     })
@@ -54,16 +55,19 @@ export default class App extends React.Component<{}, IState> {
       <div className="container-fluid">
         <div className="centreText">
           <p>Ever wondered what the official name of your bus stop is? Just type in the bus stop ID below to find out!</p>
+          <p>Source: Auckland Transport</p>
           <TextField id="busStopId" label="Bus Stop ID" margin="normal" />
           <Button variant="contained" color="primary" onClick={this.state.whatever}>
             Check
           </Button>
-          <div  className="dank">
+          <div  className="result">
           {
             this.state.results === "" && this.state.busStop !== "" ?
             <CircularProgress thickness={3} /> :
             <p>{this.state.results}</p>
           }
+          <hr />
+          <p>Don't know what the ID of your bus stop is? Check the Examples tab for some example bus stops in the city centre.</p>
           </div>
         </div>
       </div>
